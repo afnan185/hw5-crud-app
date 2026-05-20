@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trade Journal</title>
+  </head>
+  <body>
+    <h1>Trade Journal</h1>
+
+    <form action="/trades" method="POST">
+      <label for="ticker">Ticker:</label>
+      <input id="ticker" name="ticker" type="text" required />
+
+      <label for="type">Type:</label>
+      <select id="type" name="type" required>
+        <option value="Long">Long</option>
+        <option value="Short">Short</option>
+      </select>
+
+      <label for="outcome">Outcome:</label>
+      <select id="outcome" name="outcome" required>
+        <option value="Profit">Profit</option>
+        <option value="Loss">Loss</option>
+      </select>
+
+      <button type="submit">Add Trade</button>
+    </form>
+
+    <h2>All Trades</h2>
+    <ul>
+      <% trades.forEach((trade) => { %>
+      <li>
+        <strong><%= trade.ticker %></strong> -
+        <%= trade.type %> -
+        <%= trade.outcome %>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
